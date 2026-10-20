@@ -41,21 +41,34 @@ elif page == "Stock Analysis":
     st.write("""
 **Key Findings:**
 
-- **Trailer 1 (Dec 2023):** Stock jumped 8.39% — the strongest single reaction, 
+- **Trailer 1 (Dec 2023):** Stock jumped 8.39%, the strongest single reaction,
 likely amplified by the surprise early release due to leaks.
 
-- **Trailer 2 (May 2025):** Another positive 7.87% bump, confirming sustained 
-investor confidence tied to marketing momentum.
+- **Trailer 2 (May 2025):** Another strong 7.87% gain, showing investor
+confidence tied to marketing momentum.
 
-- **Delay Announcement (May 2026):** The only negative event at -5.97%, 
-showing markets punish uncertainty even for a guaranteed blockbuster.
+- **Delay Announcement (2026):** A -5.97% drop, showing markets punish
+uncertainty even for a guaranteed blockbuster.
 
-- **Projected Release (Nov 2026):** Estimated 10.26% gain anticipated, 
-consistent with Rockstar's historical release performance.
+- **Gameplay Leaks (Aug 2026):** A -5.47% slide over the week the leaks spread.
+Unlike the 2023 leak, which came right before a big gain, these leaks hurt the stock.
 
-**Pattern:** Take-Two strategically times announcements around earnings calls 
-to maintain investor confidence while organic social media amplifies reach, 
-reducing traditional marketing spend.
+- **Extended Look / Trailer 3 (Aug 2026):** The 26-minute gameplay video pushed
+the stock up about 3% during the day, but it closed only 1.03% higher.
+
+- **Trailer 4 (Oct 2026):** A 4.05% gain, a solid bump but still below the
+first two trailers.
+
+- **Projected Release (Nov 2026):** An estimated 10.26% gain. This row is a
+projection, not real market data.
+
+**Pattern:** The early trailers moved the stock the most, and later reveals
+moved it less, which suggests much of the hype was already priced in by 2026.
+Negative surprises like the delay and the 2026 leaks hit the stock about as
+hard as the best trailers lifted it.
+
+**Projection check:** An earlier version of this dataset projected +3.17% for
+Trailer 3. The real move was about +3% intraday and +1.03% at close.
 """)
 elif page == "About This Project":
     st.title("🎮 About This Project")
@@ -69,18 +82,19 @@ elif page == "About This Project":
     ## Methodology
     This application analyzes publicly available data including:
     - Take-Two Interactive (TTWO) stock prices around key GTA 6 announcements
-    - Marketing event timeline from 2022 to projected 2026 release
-    - Percent change calculations to measure market reaction
+    - Marketing event timeline from 2022 to the projected November 2026 release
+    - Percent change from the closing price before each event to the closing
+      price after it (the gameplay leaks row covers Aug 14 to Aug 26, 2026)
     
     ## Tools Used
     - **Python** — data processing and application logic
     - **Pandas** — data manipulation and CSV reading
     - **Streamlit** — web application framework
-    - **Matplotlib** — data visualization
-    
+    - **Streamlit charts** — data visualization
+
     ## Data Notes
-    Stock prices for Trailer 3 Expected and GTA 6 Release are projected estimates 
-    based on historical patterns. All other figures are based on publicly reported data.
+    Stock prices for GTA 6 Release are projected estimates. All other figures
+    are based on publicly reported closing prices.
     
     *Created by Brandon Malave — FTCC, 2026*
     """)
