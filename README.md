@@ -1,72 +1,111 @@
-📊 GTA 6 Marketing Analysis
+# GTA 6 Marketing Analysis
 
-A data-driven look at Take-Two Interactive's marketing strategy leading up to GTA 6 — tracking stock movement, announcement timing, and the mechanics behind one of the most anticipated releases in entertainment history.
+An interactive Streamlit dashboard that looks at how Take-Two Interactive's stock (TTWO) reacted to major GTA 6 marketing milestones: the development confirmation, trailers, and the release delay.
 
+## Why I Built This
 
-🔍 What This Project Does
-This project analyzes how Take-Two Interactive (TTWO) has strategically managed its GTA 6 marketing campaign by examining:
+This is a personal project, not a class assignment. I've followed Rockstar for years, and I've always been interested in how they market their games. They spend very little on traditional advertising, yet every trailer becomes a global event. I wanted to see whether that hype shows up in hard numbers, so I started with the most measurable signal I could find: how Take-Two's stock moved after each major announcement.
 
-Stock price movement around key announcements (trailers, leaks, delay announcements)
-Earnings call alignment — how Rockstar times reveals around investor events
-Organic vs. paid reach — GTA's social media footprint without traditional advertising
-Release timing patterns across the GTA and Red Dead Redemption franchises
+It was also a chance to practice turning a question I actually care about into data, analysis, and a working app.
 
-Built as a portfolio project combining Python data analysis with an interactive Streamlit dashboard.
+## Hypothesis
 
-🗂️ Project Structure
+Rockstar Games and Take-Two Interactive follow a deliberate, repeatable marketing pattern, using controlled reveals, strategic delays, and earnings call timing to keep both investor confidence and player excitement high.
+
+This first version tests one part of that idea: **how the stock price moved around each major GTA 6 event.**
+
+## What It Does
+
+- Loads a hand-built timeline of eight GTA 6 milestones from `gta6_data.csv`
+- Shows TTWO's stock price before and after each event
+- Calculates and charts the percent change for each event
+- Explains the findings, methodology, and data limits in the app
+
+## Key Findings
+
+| Event | Date | Change |
+|---|---|---|
+| Development confirmed | Feb 2022 | +2.43% |
+| Trailer 1 (leaked early) | Dec 2023 | **+8.39%**, the strongest reaction |
+| Trailer 2 | May 2025 | +7.87% |
+| Delay announced | 2026 | **−5.97%** |
+| Gameplay leaks | Aug 2026 | **−5.47%** over the week the leaks spread |
+| Extended Look (Trailer 3) | Aug 2026 | +1.03% at close (about +3% intraday) |
+| Trailer 4 | Oct 2026 | +4.05% |
+| Release | Nov 2026 | +10.26% *(projected)* |
+
+**Takeaways:**
+- The first two trailers produced the strongest gains, with Trailer 1 the largest, likely boosted by the surprise of the early leak.
+- Later reveals moved the stock less. The Extended Look jumped about 3% during the day but closed only 1% higher, which suggests the market had already priced in much of the hype by 2026.
+- Leaks cut both ways. The 2023 leak came right before a big gain, but the August 2026 gameplay leaks were followed by a drop of over 5%.
+- Negative surprises (the delay and the 2026 leaks) hit the stock about as hard as the best trailers lifted it.
+
+**Projection check:** an earlier version of this dataset projected a +3.17% move for Trailer 3. The real result was about +3% intraday and +1.03% at close: close on the intraday move, but too high for the closing price.
+
+> **Note on the projected row:** "GTA 6 Release" uses estimated prices, not real market data. Treat it as a prediction, not a result.
+
+> **How changes are measured:** each row compares the closing price before the event with the closing price after it. The gameplay leaks row covers a multi-day window (Aug 14 to Aug 26 closes) because the leaks spread over several days.
+
+## Project Structure
+
+```
 gta6-marketing-analysis/
-├── app.py              # Streamlit dashboard (main application)
-├── launcher.py         # App launcher script
-├── gta6_data.csv       # Core dataset (key events, stock data, dates)
-├── requirements.txt    # Python dependencies
+├── app.py            # Streamlit dashboard (3 pages)
+├── launcher.py       # Windows launcher: starts the app and opens the browser
+├── gta6_data.csv     # Event timeline with TTWO prices before and after
+├── requirements.txt  # Python dependencies
 └── README.md
+```
 
-📈 Key Findings
+## Dashboard Pages
 
-Trailer 1 (Dec 2023): TTWO stock jumped +8.39% — the strongest single-event reaction, amplified by a surprise early leak
-Trailer 2 (May 2025): Another +7.87% gain, confirming sustained investor confidence tied to marketing momentum
-Delay Announcement (May 2026): The only negative event at -5.97%, showing markets punish uncertainty even for a guaranteed blockbuster
-Projected Release (Nov 2026): Historical Rockstar release patterns suggest an estimated +10.26% gain anticipated
+1. **Overview & Timeline:** the full event table and a line chart of TTWO's price before and after each event
+2. **Stock Analysis:** a bar chart of percent change per event, with written analysis
+3. **About This Project:** hypothesis, methodology, tools, and data notes
 
-Pattern: Take-Two consistently times major announcements around earnings calls to maintain investor confidence, while organic social media reach reduces reliance on traditional paid marketing.
+## Running the App
 
-🚀 Running the App
-Prerequisites
+**Requirements:** Python 3.8+
 
-Python 3.8+
-pip
-
-Setup
-bash# Clone the repo
+```bash
 git clone https://github.com/brandonlmalave/gta6-marketing-analysis.git
 cd gta6-marketing-analysis
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run the app
 streamlit run app.py
-Or use the launcher:
-bashpython launcher.py
+```
 
-🛠️ Tech Stack
-ToolPurposePythonCore analysis and data processingpandasData manipulationStreamlitInteractive dashboardmatplotlibCharts and visualizationsCSV / ExcelData storage
+Then open `http://localhost:8501` if it doesn't open automatically.
 
-📌 Pages
+**On Windows**, you can also run:
 
-Overview & Timeline — Full event table with TTWO stock price before/after each milestone
-Stock Analysis — Bar chart of percent change per key event with written analysis
-About This Project — Hypothesis, methodology, and project context
+```bash
+python launcher.py
+```
 
+It starts the app in a new console window and opens your browser.
 
-🧠 Hypothesis
+## Tech Stack
 
-Rockstar Games and Take-Two Interactive use a deliberate, earnings-aligned announcement strategy that maximizes organic reach and investor confidence — making GTA 6 one of the most efficiently marketed products in entertainment history.
+| Tool | Purpose |
+|---|---|
+| Python | Data processing and app logic |
+| pandas | Reading and shaping the CSV data |
+| Streamlit | The dashboard and its built-in charts |
+| CSV | Data storage |
 
+## Future Work
 
-👤 Author
-Brandon Malave
-IT & Computer Programming | Fayetteville Technical Community College
-GitHub
+The full hypothesis covers more than this version measures. Next steps:
 
-This project is for educational and portfolio purposes. All stock data sourced from public financial records.
+- **Earnings call timing:** add Take-Two's earnings call dates and measure how close each reveal falls to one
+- **Organic vs. paid reach:** add trailer view counts and social engagement data
+- **Franchise comparison:** add the same event timeline for earlier Rockstar releases (GTA V, Red Dead Redemption 2) to test whether the pattern repeats
+- **Better price data:** use daily closing prices from a market data source instead of hand-entered values, and compare TTWO's moves against the overall market
+
+## Author
+
+**Brandon Malave**
+IT & Computer Programming, Fayetteville Technical Community College
+[GitHub](https://github.com/brandonlmalave)
+
+*For educational and portfolio purposes. Historical prices are from public records; projected rows are estimates.*
